@@ -2,10 +2,10 @@ S = list(input())
 S_t = {}
 alp = {}
 
-for index, value in enumerate(S) :
-    if value in S_t.keys() :
+for value, key in enumerate(S) :
+    if key in S_t.keys() :
         continue
-    S_t[value] = index
+    S_t[key] = value
 
 for i in range(97, 123, 1) :
     alp[chr(i)] = -1
