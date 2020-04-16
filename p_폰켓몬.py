@@ -8,8 +8,6 @@ def solution(nums) :
     key_lst = Counter(nums).keys()
     print(key_lst)
 
-    n = len(nums)//2
-
     if len(key_lst) < len(nums)//2 :
         return len(key_lst)
     else :
