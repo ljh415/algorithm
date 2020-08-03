@@ -3,14 +3,14 @@ from collections import Counter
 def solution(participant, completion):
     answer = ''
 
-    participant = Counter(participant)
-    for a in completion :
-        participant[a] -= 1
+    participant = dict(Counter(participant))
+
+    for comp in completion:
+        participant[comp]-=1
 
     for key, value in participant.items():
-        if value == 1 :
+        if value != 0 :
             return key
-
 
 if __name__ == "__main__" :
     participant, completion = ['leo', 'kiki', 'eden'], ['eden', 'kiki']
