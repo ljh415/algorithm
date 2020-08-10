@@ -12,9 +12,17 @@ def solution(participant, completion):
         if value != 0 :
             return key
 
+def solution2(participant, completion) :
+    dic = {}
+    dic = Counter(participant) - Counter(completion)
+    # print(dic)
+
+    return list(dic.keys())[0]
+
 if __name__ == "__main__" :
     participant, completion = ['leo', 'kiki', 'eden'], ['eden', 'kiki']
     # participant, completion = ['marina', 'josipa', 'nikola', 'vinko', 'filipa'], ['josipa', 'filipa', 'marina', 'nikola']
     # participant, completion = ['mislav', 'stanko', 'mislav', 'ana'], ['stanko', 'ana', 'mislav']
 
-    print(solution(participant, completion))
+    # print(solution(participant, completion))
+    print(solution2(participant, completion))
