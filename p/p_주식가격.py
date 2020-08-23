@@ -5,7 +5,7 @@ def solution(prices) :
         flag = False
         for j in range(i+1, len(prices)) :
             if prices[i] > prices[j] :
-                answer.append(i-j)
+                answer.append(j-i)
                 flag = True
                 break
         if flag == False :
@@ -19,28 +19,3 @@ def solution(prices) :
 if __name__ == "__main__" :
     prices = [1, 2, 3, 2, 3]
     print(solution(prices))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
