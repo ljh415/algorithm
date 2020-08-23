@@ -3,11 +3,11 @@ def solution(priorities, location):
     check_flag = [0] * len(priorities)
     check_flag[location] = 1
 
-    Max_in_lst = max(priorities)
+    max_in_lst = max(priorities)
 
     while True:
 
-        if priorities[0] < Max_in_lst:
+        if priorities[0] < max_in_lst:
             p = priorities.pop(0)
             c = check_flag.pop(0)
             priorities.append(p)
@@ -21,7 +21,7 @@ def solution(priorities, location):
             p = priorities.pop(0)
             c = check_flag.pop(0)
             answer += 1
-            Max_in_lst = max(priorities)
+            max_in_lst = max(priorities)
 
     return answer
 
