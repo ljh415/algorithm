@@ -1,6 +1,5 @@
 import math
 
-
 def solution(progresses, speeds):
     answer = []
     count = 0
@@ -15,10 +14,9 @@ def solution(progresses, speeds):
         a = progresses[0]
         if key < progresses[0]:
             key = progresses[0]
-            if count != 0 :
+            if count != 0:
                 answer.append(count)
                 count = 0
-
 
         elif a <= key:
             progresses.pop(0)
@@ -30,14 +28,11 @@ def solution(progresses, speeds):
             count = 0
     answer.append(count)
 
-
-    print(answer)
-
     return answer
 
+if __name__ == '__main__':
 
-progresses = [93, 30, 55]
-speeds = [1, 30, 5]
+    progresses = [93, 30, 55]
+    speeds = [1, 30, 5]
 
-
-solution(progresses, speeds)
+    print(solution(progresses, speeds))
