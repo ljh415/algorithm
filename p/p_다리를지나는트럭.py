@@ -6,8 +6,9 @@ def solution(bridge_length, weight, truck_weights):
     # 트럭을 한 대씩 뽑는다
     for i in truck_weights :
         q_truck = i
-        while q_truck != 0 : # 트럭이 빠질 때까지 확인하기 위해서
-            if len(t_list) == bridge_length : # t_list의 길이가 bridge_length와 같아지면 트럭빼기
+        while q_truck != 0 :
+            # t_list의 길이가 bridge_length와 같아지면 트럭빼기
+            if len(t_list) == bridge_length :
                 t_list.pop() # 시간을 더해줘야 할 것 같은데, 밑에 if, else 구문에서 시간을 넣어주면 된다.
 
             # sum()부분에서 시간초과
