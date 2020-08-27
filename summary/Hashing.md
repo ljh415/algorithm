@@ -11,6 +11,8 @@
 
 - 서로 다른 입력 값에 대해 같은 해시 태이블 주소를 반환할 때 충돌이 발생
 
+
+
 ### 해결방법
 
 - 크게 개방해싱과 폐쇄해싱으로 나뉜다.
@@ -30,3 +32,4 @@
     [해싱, 해시함수, 해시테이블](https://ratsgo.github.io/data%20structure&algorithm/2017/10/25/hash/)
 
     [8장 해시 테이블](https://dbehdrhs.tistory.com/70)
+
