@@ -40,13 +40,11 @@ def solution(scoville, K):
         except:
             return -1
 
-        count += 1
-
-    answer = count
+        answer += 1
 
     return answer
 
 if __name__ == '__main__':
     scoville, K = [1, 2, 3, 9, 10, 12], 7
-    print(pre_solution(scoville, K))
-    # print(solution(scoville, K))
+    # print(pre_solution(scoville, K))
+    print(solution(scoville, K))
