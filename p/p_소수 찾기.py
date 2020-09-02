@@ -1,7 +1,38 @@
 import itertools
 
-# avg time = 430.4458
+# avg time : 391.9116
+def make_sieve(n) :
+    sieve = [True] * (n+1)
+    m = int(n**0.5)
+    for i in range(2, m+1):
+        if sieve[i] == True:
+            for j in range(i+i, n+1, i):
+                sieve[j] = False
+
+    return [i for i in range(2, n+1) if sieve[i] == True]
+
 def solution(numbers):
+    answer = 0
+    num_lst = []
+
+    # 모든 경우의 수
+    for i in range(len(numbers)):
+        num_lst.extend([int(''.join(a)) for a in list(itertools.permutations(list(numbers), i + 1))])
+    num_lst = list(set(num_lst))
+
+    # 에라토스테네스의 체
+    sieve = make_sieve(max(num_lst))
+    # print(sieve)
+
+    for num in num_lst :
+        if num in sieve:
+            answer +=1
+
+    return answer
+
+
+# avg time = 430.4458
+def solution3(numbers):
     answer = 0
     num_lst = []
 
