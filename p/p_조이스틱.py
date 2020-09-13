@@ -1,11 +1,9 @@
-def solution(name):
+def solution2(name):
     answer = 0
     name = list(name)
     answers = []
-    # print(name)
-    # print(len(name))
 
-    print("A={} ~ Z={}".format(ord("A"), ord("Z")))
+    # print("A={} ~ Z={}".format(ord("A"), ord("Z")))
 
     for i in range(len(name)):
         code = 65  # A를 나타내는 unicode로 초기화
@@ -28,6 +26,7 @@ def solution(name):
 
     answers.append(answer)
 
+    ## 거꾸로..탐색
     answer = 0
     for i in range(0, -len(name), -1):
         code = 65  # A를 나타내는 unicode로 초기화
@@ -49,16 +48,49 @@ def solution(name):
 
     answers.append(answer)
 
-    print(answers)
-
     return min(answers)
 
-# def solution(name):
-#     answer = 0
-#
-#
-#
-#     return answer
+def solution(name):
+    answer = 0
+    name = list(name)
+    index = 0
+    while(True) :
+        right = 1
+        left = 1
+        if name[index] != 'A' :
+            updown = min(ord(name[index]) - ord('A'), ord('Z')-ord(name[index])+1)
+            answer += updown
+        name[index] = 'A'
+
+        # 탈출조건
+        if name == ["A"] * len(name) : break
+
+        # 이 부분이 중요했다..
+        # 현재 위치에서 오른쪽, 왼쪽 방향을 선택
+        # 오른쪽으로 탐색
+        # A가 아닌 문자를 찾는다
+        for i in range(1, len(name)):
+            if name[index+i] == 'A' :
+                right += 1
+            else :
+                break
+
+        # 왼쪽으로 탐색다
+        # A가 아닌 문자를 찾는다
+        for i in range(1, len(name)):
+            if name[index-i] == 'A' :
+                left += 1
+            else :
+                break
+
+        if right>left :
+            answer += left
+            index -= left
+        else :
+            answer += right
+            index += right
+
+    return answer
 
 if __name__ == "__main__" :
     name = "JEROEN"
