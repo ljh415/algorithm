@@ -2,14 +2,14 @@ def solution(routes):
     answer = 0
     routes = sorted(routes, key=lambda x : x[1])
     print(routes)
-    prev_start = -30000
+    prev_end = -30000
 
     for start, end in routes :
         # 겹쳐지는 부분이 없을 경우 answer를 하나 증가
         # 카메라 += 1
-        if prev_start < start :
+        if prev_end < start :
             answer += 1
-            prev_start = end
+            prev_end = end
 
     return answer
 
