@@ -1,30 +1,67 @@
-N, M, V = map(int, input().split())
-matrix = [[0] * (N + 1) for _ in range(N + 1)]
-for _ in range(M):
-    link = list(map(int, input().split()))
-    matrix[link[0]][link[1]] = 1
-    matrix[link[1]][link[0]] = 1
+from collections import defaultdict, deque
 
+def make_graph(m) :
+    graph = defaultdict(int)
+    for i in range(m):
+        a, b = map(int, input().split())
+        if graph[a]:
+            tmp = graph[a]
+            tmp.append(b)
+            tmp = sorted(tmp)
+            graph[a] = tmp
+        else :
+            graph[a] = [b]
 
-def dfs(current_node, row, foot_prints):
-    foot_prints += [current_node]
-    for search_node in range(len(row[current_node])):
-        if row[current_node][search_node] and search_node not in foot_prints:
-            foot_prints = dfs(search_node, row, foot_prints)
-    return foot_prints
+        if graph[b] :
+            tmp = graph[b]
+            tmp.append(a)
+            tmp = sorted(tmp)
+            graph[b] = tmp
+        else :
+            graph[b] = [a]
+    return graph
 
+def DFS(graph, start, visited) :
+    visited[start-1] = True
+    print(start, end=' ')
+    try:
+        for i in graph[start]:
+            if not visited[i-1]:
+                DFS(graph, i, visited)
+    except :
+        pass
 
-def bfs(start):
-    queue = [start]
-    foot_prints = [start]
+def BFS(graph, start, vistied):
+    queue = deque([start])
+    visited[start-1] = True
+    # print(start, end=' ')
     while queue:
-        current_node = queue.pop(0)
-        for search_node in range(len(matrix[current_node])):
-            if matrix[current_node][search_node] and search_node not in foot_prints:
-                foot_prints += [search_node]
-                queue += [search_node]
-    return foot_prints
+        v = queue.popleft()
+        print(v, end=' ')
+        # 아직 방문하지 않은 인접한 원소들을 큐에 삽입
+        try :
+            for i in graph[v]:
+                if not vistied[i-1]:
+                    queue.append(i)
+                    visited[i-1] = True
+                    # print(i, end=' ')
+        except :
+            pass
 
+n, m, v = map(int, input().split())
+visited = [False] * n
 
-print(*dfs(V, matrix, []))
-print(*bfs(V))
+graph = make_graph(m)
+DFS(graph, v, visited)
+
+visited = [False] * n
+print()
+BFS(graph, v, visited)
+
+## 예외의 경우 : 시작점에 연결된 간선이 없을 때 에러가 발생
+# in:
+# 1000 1 1
+# 999 1000
+# out :
+# 1
+# 1
