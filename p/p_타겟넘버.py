@@ -92,21 +92,6 @@ def solution_dfs2(numbers, target):
     return answer
 
 
-from collections import deque
-
-# dfs로 계산을 해나가고 마지막에 target과 같은지를 탐색
-def dfs(graph, start, visited) :
-    queue = deque([start])
-    visited[start] = True
-
-    while queue:
-        v = queue.popleft()
-        for i in graph[v] :
-            if not visited[i]:
-                queue.append(i)
-                visited[i] = True
-
-
 ## 출처 : 재희님 깃허브(https://github.com/JaeHeee)
 def solution_1012(numbers, target):
     node = [0]
@@ -123,4 +108,4 @@ def solution_1012(numbers, target):
 if __name__ == '__main__':
     numbers, target = [1, 1, 1, 1, 1], 3
 
-    print(solution_1012(numbers, target))
+    print(solution_dfs(numbers, target))
